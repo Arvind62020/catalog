@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/pages/home_page.dart';
+import 'package:flutter_catalog/pages/login_page.dart';
+import 'package:flutter_catalog/utils/routs.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Material(
-        child: Center(
-          child: Container(
-            child: const Text("Welcome to 30 days of flutter"),
-          ),
-        ),
+      // home: HomePage(),//either ues route or home:
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      routes: {
+        "/": (context) => LoginPage(),
+        MyRouts.homeRoute: (context) => HomePage(),
+        MyRouts.loginRoute: (context) => LoginPage(),
+      },
     );
   }
 }
-
-
